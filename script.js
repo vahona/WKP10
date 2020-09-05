@@ -43,7 +43,7 @@ const displayList = data => {
 
 
 
-const editPartner = (persons) => {
+const editPartner = (options) => {
 
 	
 	// code edit function here
@@ -53,59 +53,57 @@ const editPartner = (persons) => {
    popup.classList.add('.popup');
    popup.insertAdjacentHTML('afterbegin', `
 	 <fieldset style="border: none;">
-      <label for="${persons.id}"></label>
-      <input type="text" value="${persons.lastName}" id="${persons.id}">
+      <label for="namelast">LastName</label>
+      <input type="text" value="" id="namelast">
     </fieldset>
     <fieldset style="border: none;">
-      <label for="${persons.id}"></label>
-      <input type="text" value="${persons.firstName}" id="${persons.id}">
+      <label for="">FisrtName</label>
+      <input type="text" value="" id="">
     </fieldset style="border: none;">
     <fieldset style="border: none;">
-      <label for="${persons.id}"></label>
-      <input type="text" value="${persons.jobTitle}" id="${persons.id}">
+      <label for="">JobTitle</label>
+      <input type="text" value="" id="">
     </fieldset>
     <fieldset style="border: none;">
-      <label for="${persons.id}"></label>
-      <input type="text" value="${persons.jobArea}" id="${persons.id}">
+      <label for="">JobArea</label>
+      <input type="text" value="" id="">
     </fieldset>
     <fieldset style="border: none;">
-      <label for="${persons.id}"></label>
-      <input type="text" value="${persons.phoneNumber}" id="${persons.id}">
+      <label for="">Phone</label>
+      <input type="text" value="" id="">
     </fieldset>
-    <button class="button__save">Save</button>
-    <button class="button__cancel">Cancel</button>
+    <div class="button-sub">
+      <button class="button__save">Save</button>
+      <button class="button__cancel">Cancel</button>
+    </div>
    `);
 
-
+    document.body.appendChild(popup);
+    
 	
-	})
+  });
+
+
+
+  popup.classList.add('open');
+
 
 
 };
 
-editPartner();
 
-async function editPartener(e) {
-	const button = e.currentTarget;
-	const answer = await editPartner({
-        
-     
 
-	});
-
-	console.log(answer);
+const listenTothepencil = (e) => {
+  const button = e.target.closest('.edit');
+     if(button) {
+       editPartner()
+     }
 }
 
 
-
-const button = document.querySelector('.edit');
-buttons.forEach(button => button.addEventListener('click', editPartener));
-
-
-
-
-
-
+const lists = [
+  {lastName : ""}
+]
 
 
 const editPartnerPopup = () => {
@@ -120,4 +118,21 @@ const deleteDeletePopup = () => {
 	// create confirmation popup here
 };
 
+async function asyncMap(array, callback) {
+  const result = [];
+  for(const item of array) {
+    result.push(await callback(item));
+  }
+
+}
+
+async function show() {
+  const results = await asyncMap(lists, editPartner);
+  console.log(results);
+}
+
+// show()
+
 displayList(persons);
+
+tbody.addEventListener('click', listenTothepencil)

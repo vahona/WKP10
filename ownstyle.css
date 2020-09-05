@@ -1,0 +1,38 @@
+form {
+	position: fixed;
+	height: 350px;
+	width: 200px;
+	transition: all 0.25s;
+	top: 0;
+	display: grid;
+	justify-content: center;
+	align-items: center;
+    pointer-events: none;
+    left: 50%;
+    top: 50%;
+    background-color: goldenrod;
+
+    
+
+}
+
+label {
+    margin-inline-start: 2rem;
+}
+
+input {
+     margin-inline-start: 2rem;
+}
+
+
+
+button {
+    width: 50px;
+   
+}
+
+.button-sub {
+   display: flex;
+   margin: 2rem;
+   justify-content: space-between;
+}
