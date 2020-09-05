@@ -54,7 +54,7 @@ const editPartner = (options) => {
    popup.insertAdjacentHTML('afterbegin', `
 	 <fieldset style="border: none;">
       <label for="namelast">LastName</label>
-      <input type="text" value="" id="namelast">
+      <input type="text" value="" id="namelast" required>
     </fieldset>
     <fieldset style="border: none;">
       <label for="">FisrtName</label>

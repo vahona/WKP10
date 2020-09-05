@@ -7,13 +7,19 @@ form {
 	display: grid;
 	justify-content: center;
 	align-items: center;
-    pointer-events: none;
     left: 50%;
     top: 50%;
     background-color: goldenrod;
 
     
 
+}
+
+
+
+.popup.open {
+	--opacity: 1;
+	pointer-events: all;
 }
 
 label {
