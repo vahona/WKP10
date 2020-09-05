@@ -39,9 +39,74 @@ const displayList = data => {
 		.join('');
 };
 
-const editPartner = () => {
+// Grabe pencil 
+
+
+
+const editPartner = (persons) => {
+
+	
 	// code edit function here
+
+	return new Promise (async function(resolve) {
+   const popup = document.createElement('form');
+   popup.classList.add('.popup');
+   popup.insertAdjacentHTML('afterbegin', `
+	 <fieldset style="border: none;">
+      <label for="${persons.id}"></label>
+      <input type="text" value="${persons.lastName}" id="${persons.id}">
+    </fieldset>
+    <fieldset style="border: none;">
+      <label for="${persons.id}"></label>
+      <input type="text" value="${persons.firstName}" id="${persons.id}">
+    </fieldset style="border: none;">
+    <fieldset style="border: none;">
+      <label for="${persons.id}"></label>
+      <input type="text" value="${persons.jobTitle}" id="${persons.id}">
+    </fieldset>
+    <fieldset style="border: none;">
+      <label for="${persons.id}"></label>
+      <input type="text" value="${persons.jobArea}" id="${persons.id}">
+    </fieldset>
+    <fieldset style="border: none;">
+      <label for="${persons.id}"></label>
+      <input type="text" value="${persons.phoneNumber}" id="${persons.id}">
+    </fieldset>
+    <button class="button__save">Save</button>
+    <button class="button__cancel">Cancel</button>
+   `);
+
+
+	
+	})
+
+
 };
+
+editPartner();
+
+async function editPartener(e) {
+	const button = e.currentTarget;
+	const answer = await editPartner({
+        
+     
+
+	});
+
+	console.log(answer);
+}
+
+
+
+const button = document.querySelector('.edit');
+buttons.forEach(button => button.addEventListener('click', editPartener));
+
+
+
+
+
+
+
 
 const editPartnerPopup = () => {
 	// create edit popup here
