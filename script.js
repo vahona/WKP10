@@ -50,6 +50,7 @@ const editPartner = (options) => {
 
 	return new Promise (async function(resolve) {
    const popup = document.createElement('form');
+   const relate = persons.find(person => person.id === persons.id);
    popup.classList.add('.popup');
    popup.insertAdjacentHTML('afterbegin', `
 	 <fieldset style="border: none;">
