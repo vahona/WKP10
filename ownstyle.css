@@ -70,7 +70,7 @@ article {
     justify-content: center;
     align-items: center;
     font-size: 32px;
-    padding-inline-end: 1rem;
+    margin-inline-end: 1rem;
     margin-inline-start: 1rem;
 }
 
