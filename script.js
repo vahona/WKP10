@@ -117,9 +117,11 @@ const lists = [
 
 
 
-const deletePartner = (persons) => {
+const deletePartner = (id) => {
 
-  const wantdelete = persons.find(person => person.id === persons.id);
+  const deleteConf = persons.filter(person => person.id !== id);
+  
+  displayList(deleteConf);
   const deletesure = deleteDeletePopup(persons);
 
  
@@ -128,7 +130,8 @@ const deletePartner = (persons) => {
 	// code delete function gere
 };
 
-const deleteDeletePopup = () => {
+const deleteDeletePopup = (id) => {
+  const wantdelete = persons.find(person => person.id === id);
 
   const popup = document.createElement('article');
   popup.classList.add('.delete_confirm');
@@ -146,7 +149,37 @@ const deleteDeletePopup = () => {
 
   popup.classList.add('.delete_confirm');
 
-	// create confirmation popup here
+  // create confirmation popup here
+  
+
+
+  const confirm = e => {
+
+    const yes = e.target.matches('.yes__sure');
+    const no = e.target.matches('.no__want');
+    
+    if(yes) {
+      e.preventDefault();
+      const deleteCo = persons.filter(person => person.id !== id);
+      persons = deleteCo;
+      displayList(deleteCo);
+      console.log(deleteCo);
+      const remove = popup.style.display = 'none';
+      remove;
+    }
+
+    else if(no) {
+      const remove = popup.style.display = 'none';
+     remove;
+
+    }
+
+  };
+
+
+
+  window.addEventListener('click', confirm)
+
 };
 
 async function asyncMap(array, callback) {
@@ -180,7 +213,7 @@ const handleClick = e => {
  if(deletButton) {
    
   const id = deletButton.id;
-  deletePartner(id);
+   deleteDeletePopup(id);
    
  }
 
