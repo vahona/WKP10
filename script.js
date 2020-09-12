@@ -54,24 +54,24 @@ const editPartner = (options) => {
    popup.classList.add('.popup');
    popup.insertAdjacentHTML('afterbegin', `
 	 <fieldset style="border: none;">
-      <label for="namelast">LastName</label>
-      <input type="text" value="" id="namelast" required>
+      <label for="namelast">LastName</label><br>
+      <input type="text" value="${resolve.lastName}" id="namelast">
     </fieldset>
     <fieldset style="border: none;">
-      <label for="">FisrtName</label>
-      <input type="text" value="" id="">
+      <label for="">FisrtName</label><br>
+      <input type="text" value="${resolve.firstName}" id="">
     </fieldset style="border: none;">
     <fieldset style="border: none;">
-      <label for="">JobTitle</label>
-      <input type="text" value="" id="">
+      <label for="">JobTitle</label><br>
+      <input type="text" value="${resolve.jobTitle}" id="">
     </fieldset>
     <fieldset style="border: none;">
-      <label for="">JobArea</label>
-      <input type="text" value="" id="">
+      <label for="">JobArea</label><br>
+      <input type="text" value="${resolve.jobArea}" id="">
     </fieldset>
     <fieldset style="border: none;">
-      <label for="">Phone</label>
-      <input type="text" value="" id="">
+      <label for="">Phone number</label><br>
+      <input type="text" value="${resolve.phoneNumber}" id="">
     </fieldset>
     <div class="button-sub">
       <button class="button__save">Save</button>
@@ -102,6 +102,8 @@ const listenTothepencil = (e) => {
 }
 
 
+
+
 const lists = [
   {lastName : ""}
 ]
@@ -112,6 +114,25 @@ const editPartnerPopup = () => {
 };
 
 const deletePartner = () => {
+
+  const popup = document.createElement('article');
+  const wantdelete = persons.find(person => person.id === persons.id);
+  popup.classList.add('.delete_confirm');
+  popup.insertAdjacentHTML('afterbegin', `
+  <p class="deleteparagraph">
+      Are you sure you want to delete this partener
+    </p>
+    <div class="container__buttom">
+      <button class="confirm_buttom yes__sure"> Yes </button>
+      <button class="confirm_buttom no__want"> No </button>
+    </div>
+  `);
+
+  document.body.appendChild(popup);
+
+  popup.classList.add('.delete_confirm');
+
+
 	// code delete function gere
 };
 
@@ -136,4 +157,5 @@ async function show() {
 
 displayList(persons);
 
-tbody.addEventListener('click', listenTothepencil)
+tbody.addEventListener('click', listenTothepencil);
+tbody.addEventListener('click', deletePartner);
