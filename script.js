@@ -39,25 +39,47 @@ const displayList = data => {
 		.join('');
 };
 
-// Grabe pencil 
+
+
+const editPartner = e => {
+
+  // code edit function here
+
+  const saveBtn = e.target.matches('.button__save');
+  console.log("s");
+  const CancelBtn = e.target.matches('.button__cancel');
+
+  if (saveBtn) {
+    const change = e => {
+      e.preventDefault();
+      const form = e.target;
+      const newVer = {
+        id: faker.random.uuid().value,
+        lastName: faker.name.lastName().value,
+        firstName: faker.name.firstName().value,
+        jobTitle: faker.name.jobTitle().value,
+        jobArea: faker.name.jobArea().value,
+        phone: faker.phone.phoneNumber().value,
+        picture: faker.image.avatar(100, 100).value,
+      };
+      persons.push(newVer);
+      tbody.dispatchEvent(new CustomEvent('pleaseUpdateTheList'));
+    };
+    console.log(form);
 
 
 
-// const editPartner = e => {
-//   const button = e.target.closest()
-//   const showAs = editPartnerPopup(person);
+    if (CancelBtn) {
 
-//   if(showAs) {
-//      displayList(persons);
-//   }
-	
-// 	// code edit function here
+    }
 
-	
+    saveEdite();
+
+  };
 
 
 
-// };
+};
 
 
 const editPartnerPopup = (id) => {
@@ -104,6 +126,10 @@ const editPartnerPopup = (id) => {
 
   // create edit popup here
 };
+
+
+
+
 
 
 
@@ -217,8 +243,10 @@ const handleClick = e => {
    
  }
 
-
 }
 
+
 tbody.addEventListener('click', handleClick);
+
+tbody.addEventListener('pleaseUpdateTheList', editPartner)
 
