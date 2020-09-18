@@ -14,6 +14,10 @@ let persons = Array.from({ length: 10 }, () => {
 	};
 });
 
+
+
+
+
 const displayList = data => {
 	tbody.innerHTML = data
 		.map(
@@ -46,7 +50,7 @@ const editPartner = e => {
   // code edit function here
 
   const saveBtn = e.target.matches('.button__save');
-  console.log("s");
+ 
   const CancelBtn = e.target.matches('.button__cancel');
 
   if (saveBtn) {
@@ -54,7 +58,7 @@ const editPartner = e => {
       e.preventDefault();
       const form = e.target;
       const newVer = {
-        id: faker.random.uuid().value,
+        id: faker.random.id().value,
         lastName: faker.name.lastName().value,
         firstName: faker.name.firstName().value,
         jobTitle: faker.name.jobTitle().value,
@@ -84,8 +88,6 @@ const editPartner = e => {
 
 const editPartnerPopup = (id) => {
   const relate = persons.find(person => person.id === id);
-  console.log(relate);
-
     const popup = document.createElement('form');
     console.log(relate);
     popup.classList.add('.popup');
@@ -124,7 +126,7 @@ const editPartnerPopup = (id) => {
 
   
 
-  // create edit popup here
+  
 };
 
 
@@ -187,9 +189,7 @@ const deleteDeletePopup = (id) => {
     if(yes) {
       e.preventDefault();
       const deleteCo = persons.filter(person => person.id !== id);
-      persons = deleteCo;
       displayList(deleteCo);
-      console.log(deleteCo);
       const remove = popup.style.display = 'none';
       remove;
     }
@@ -218,7 +218,6 @@ async function asyncMap(array, callback) {
 
 async function show() {
   const results = await asyncMap(lists, editPartner);
-  console.log(results);
 }
 
 // show()
